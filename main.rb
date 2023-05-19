@@ -25,5 +25,5 @@ puts student.classroom
 puts student.add_classroom(classroom_b)
 puts classroom_b.students
 
-rental = Rental.new(Time.now, book, person)
+rental = Rental.new(Time.now, book, capitalized_trimmed_person.correct_name)
 puts rental
