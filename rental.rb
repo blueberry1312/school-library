@@ -14,5 +14,3 @@ class Rental
     "#{@book}, Rented by #{@person}"
   end
 end
-
-

@@ -39,4 +39,3 @@ class Person < Nameable
     @rentals << rental
   end
 end
-
