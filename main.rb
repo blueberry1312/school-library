@@ -27,3 +27,4 @@ puts classroom_b.students
 
 rental = Rental.new(Time.now, book, person)
 puts rental
+
