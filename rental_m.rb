@@ -34,23 +34,21 @@ class RentalMethod
   end
 
   def list_rentals_by_person_id
-    id, rentals = rentals_by_id
-    if rentals.empty?
+    id = user_input(['ID of the person'])[0].to_i
+    rentals = load_rentals_from_json
+
+    rentals_by_id = rentals.select do |rental|
+      rental.person.id == id
+    end
+
+    if rentals_by_id.empty?
       puts 'This person has no rentals'
     else
       puts "Rentals for person with ID #{id}:"
-      rentals.each do |rental|
+      rentals_by_id.each do |rental|
         puts "Date: #{rental.date}, Book: \"#{rental.book.title}\" by #{rental.book.author}"
       end
     end
-  end
-
-  def rentals_by_id
-    id = user_input(['ID of the person'])[0].to_i
-    rentals = @rentals.select do |rental|
-      rental.person.id.to_i == id
-    end
-    [id, rentals]
   end
 
   def save_rentals_to_json
@@ -61,11 +59,16 @@ class RentalMethod
     if File.exist?('rentals.json')
       file = File.read('rentals.json')
       rental_data = JSON.parse(file)
-      @rentals = rental_data.map do |data|
-        Rental.new(data['date'], data['book'], data['person'])
+      rental_data.map do |data|
+        person_data = data['person']
+        book_data = data['book']
+        person = Person.new(person_data['age'], person_data['name'], person_data['id'])
+        book = Book.new(book_data['title'], book_data['author'])
+        Rental.new(data['date'], book, person)
       end
     else
       puts 'No rentals data found.'
+      []
     end
   end
 end

@@ -1,0 +1,15 @@
+[
+  {
+    "date": "5/25/2020",
+    "book": {
+      "title": "Harry Potter and the Philosopher's Stone",
+      "author": "J. K. Rowling"
+    },
+    "person": {
+      "type": "student",
+      "id": 685,
+      "age": "23",
+      "name": "John"
+    }
+  }
+]
