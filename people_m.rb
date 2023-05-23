@@ -39,12 +39,10 @@ class PeopleMethod < GeneralMethod
     when '1'
       new_student = create_student
       @people << new_student
-      save_people_to_json
       puts 'New person (Student) created successfully'
     when '2'
       new_teacher = create_teacher
       @people << new_teacher
-      save_people_to_json
       puts 'New person (Teacher) created successfully'
     else
       puts 'Please enter a valid number (1 or 2)'

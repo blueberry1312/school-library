@@ -24,7 +24,6 @@ class BookMethod < GeneralMethod
     title, author = book_data
 
     @books << Book.new(title, author)
-    save_books_to_json
     puts 'Book created successfully'
   end
 

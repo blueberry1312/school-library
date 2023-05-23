@@ -10,7 +10,6 @@ class RentalMethod
   def create_rental(peoples_m, books_m)
     date, book_index, person_index = rental_data(peoples_m, books_m)
     @rentals << Rental.new(date, books_m.instance_variable_get(:@books)[book_index], peoples_m.people[person_index])
-    save_rentals_to_json
     puts 'Rental created successfully'
   end
 
