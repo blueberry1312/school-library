@@ -2,7 +2,7 @@ require_relative 'book'
 require_relative 'general_m'
 
 class BookMethod < GeneralMethod
-  attr_accesor :people
+  attr_accessor :people
 
   def initialize
     super

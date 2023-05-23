@@ -16,7 +16,7 @@ class Menu
       3 => :create_person,
       4 => :create_book,
       5 => :create_rental,
-      6 => :list_all_rentals,
+      6 => :list_rentals_by_person_id,
       7 => :exit
     }
   end

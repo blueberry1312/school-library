@@ -5,26 +5,26 @@ class RentalMethod
     @rentals = []
   end
 
-  def create_rental(people_manager, book_manager)
-    date, person_index, book_index = rental_data(people_manager, book_manager)
+  def create_rental(peoples_m, books_m)
+    date, book_index, person_index = rental_data(peoples_m, books_m)
 
-    @rentals << Rental.new(date, people_manager.people[person_index], book_manager.books[book_index])
+    @rentals << Rental.new(date, books_m.instance_variable_get(:@books)[book_index], peoples_m.people[person_index])
     puts 'Rental created successfully'
   end
 
-  def rental_data(people_manager, book_manager)
+  def rental_data(peoples_m, books_m)
     puts 'Select a book from the following list by number: '
-    book_manager.list_all_books
+    books_m.list_all_books
     book_index = gets.chomp.to_i
 
     puts 'Select a person from the following list by number (Not ID): '
-    people_manager.list_all_people
+    peoples_m.list_all_people
     person_index = gets.chomp.to_i
 
     print 'Date: '
     date = gets.chomp
 
-    [date, person_index, book_index]
+    [date, book_index, person_index]
   end
 
   def list_rentals_by_person_id

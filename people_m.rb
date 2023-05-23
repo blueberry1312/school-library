@@ -3,7 +3,7 @@ require_relative 'teacher'
 require_relative 'general_m'
 
 class PeopleMethod < GeneralMethod
-  attr_accesor :people
+  attr_accessor :people
 
   def initialize
     super
@@ -19,8 +19,8 @@ class PeopleMethod < GeneralMethod
   end
 
   def create_student
-    age, name, parent_permission = student_d
-    Student.new(age, name, parent_permission)
+    age, name = student_d
+    Student.new(age, name)
   end
 
   def student_d
@@ -30,7 +30,7 @@ class PeopleMethod < GeneralMethod
     print 'Name: '
     name = gets.chomp
 
-    [age, name, parent_permission]
+    [age, name]
   end
 
   def create_teacher
