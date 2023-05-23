@@ -11,7 +11,10 @@ class Book
     @rentals << rental
   end
 
-  def to_s
-    @title
+  def to_h
+    {
+      'title' => @title,
+      'author' => @author
+    }
   end
 end
