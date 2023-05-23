@@ -89,6 +89,11 @@ To run the project, execute the following command:
 - Twitter: [@nestorsitooo](https://twitter.com/nestorsitooo)
 - LinkedIn: [Nestor Oro](https://www.linkedin.com/in/nestor-oro/)
 
+👤 **Abraham Christopher**
+
+- GitHub: [@Cabraham1](https://github.com/Cabraham1)
+- LinkedIn: [Abraham Christopher](https://www.linkedin.com/in/abrahamchristopher/)
+
 
 <p align="right"><a href="#readme-top">Back to top</a></p>
 
