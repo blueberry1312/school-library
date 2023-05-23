@@ -1,6 +1,7 @@
 require_relative 'student'
 require_relative 'teacher'
 require_relative 'general_m'
+require_relative 'user_input'
 
 class PeopleMethod < GeneralMethod
   attr_accessor :people
@@ -19,36 +20,13 @@ class PeopleMethod < GeneralMethod
   end
 
   def create_student
-    age, name = student_d
-    Student.new(age, name)
-  end
-
-  def student_d
-    print 'Age: '
-    age = gets.chomp
-
-    print 'Name: '
-    name = gets.chomp
-
-    [age, name]
+    inputs = user_input(%w[Age Name])
+    Student.new(inputs[0], inputs[1])
   end
 
   def create_teacher
-    age, name, specialization = teacher_d
-    Teacher.new(age, specialization, name)
-  end
-
-  def teacher_d
-    print 'Age: '
-    age = gets.chomp
-
-    print 'Name: '
-    name = gets.chomp
-
-    print 'Specialization: '
-    specialization = gets.chomp
-
-    [age, name, specialization]
+    inputs = user_input(%w[Age Name Specialization])
+    Teacher.new(inputs[0], inputs[2], inputs[1])
   end
 
   def create_person

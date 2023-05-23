@@ -1,8 +1,9 @@
 require_relative 'book'
 require_relative 'general_m'
+require_relative 'user_input'
 
 class BookMethod < GeneralMethod
-  attr_accessor :people
+  attr_accessor :books
 
   def initialize
     super
@@ -18,18 +19,15 @@ class BookMethod < GeneralMethod
   end
 
   def create_book
-    title, author = book_d
+    title, author = book_data
 
     @books << Book.new(title, author)
     puts 'Book created successfully'
   end
 
-  def book_d
-    print 'Title: '
-    title = gets.chomp
-
-    print 'Author: '
-    author = gets.chomp
+  def book_data
+    title = user_input(['Title'])[0]
+    author = user_input(['Author'])[0]
 
     [title, author]
   end
