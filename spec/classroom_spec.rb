@@ -18,9 +18,8 @@ describe Classroom do
   end
 
   describe '#students' do
-  it 'returns an empty array when no students are added' do
-    expect(@classroom.students).to eql []
+    it 'returns an empty array when no students are added' do
+      expect(@classroom.students).to eql []
+    end
   end
-end
-
 end
