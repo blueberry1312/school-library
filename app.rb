@@ -44,4 +44,16 @@ class App
     @rentals_m.list_rentals_by_person_id
     start
   end
+
+  def exit_and_save
+    save_all_data
+    exit
+  end
+
+  def save_all_data
+    @people_m.save_people_to_json
+    @books_m.save_books_to_json
+    @rentals_m.save_rentals_to_json
+    puts 'All data saved successfully.'
+  end
 end

@@ -33,13 +33,18 @@ class Menu
 
   def validate_option
     option = gets.chomp.to_i
-    action = @menu_actions[option]
 
-    if action
-      @app.send(action)
+    if option == 7
+      @app.exit_and_save
     else
-      puts 'Select a valid option'
-      display_menu
+      action = @menu_actions[option]
+
+      if action
+        @app.send(action)
+      else
+        puts 'Select a valid option'
+        display_menu
+      end
     end
   end
 end

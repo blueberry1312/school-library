@@ -1,6 +1,7 @@
 require_relative 'book'
 require_relative 'general_m'
 require_relative 'user_input'
+require 'json'
 
 class BookMethod < GeneralMethod
   attr_accessor :books
@@ -8,6 +9,7 @@ class BookMethod < GeneralMethod
   def initialize
     super
     @books = []
+    load_books_from_json
   end
 
   def list_all_books
@@ -30,5 +32,19 @@ class BookMethod < GeneralMethod
     author = user_input(['Author'])[0]
 
     [title, author]
+  end
+
+  def save_books_to_json
+    File.write('books.json', JSON.pretty_generate(@books.map(&:to_h)))
+  end
+
+  def load_books_from_json
+    if File.exist?('books.json')
+      file = File.read('books.json')
+      book_data = JSON.parse(file)
+      @books = book_data.map { |data| Book.new(data['title'], data['author']) }
+    else
+      puts 'No books data found.'
+    end
   end
 end
