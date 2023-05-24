@@ -11,6 +11,12 @@ describe Classroom do
     end
   end
 
-end
+  describe '#label' do
+    it 'returns the correct label' do
+      expect(@classroom.label).to eql 'Math'
+    end
+  end
+
+
 
 end
