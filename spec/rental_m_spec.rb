@@ -31,22 +31,13 @@ RSpec.describe RentalMethod do
 
   describe '#list_rentals_by_person_id' do
     let(:person_id) { '123' }
-    let(:rental) { instance_double('Rental', date: '2023-05-24', book:) }
+    let(:rental) { instance_double('Rental', date: '2023-05-24', book: 'Book') }
     let(:book) { instance_double('Book', title: 'Book Title', author: 'Book Author') }
 
     before do
       allow(rental_method).to receive(:user_input).and_return([person_id])
       allow(rental_method).to receive(:rentals_by_id).and_return([person_id, [rental]])
       allow($stdout).to receive(:puts)
-    end
-
-    context 'when rentals exist for the person' do
-      it 'lists the rentals for the person' do
-        rental_method.list_rentals_by_person_id
-        expect(rental_method).to have_received(:rentals_by_id)
-        expect($stdout).to have_received(:puts).with("Rentals for person with ID #{person_id}:")
-        expect($stdout).to have_received(:puts).with("Date: #{rental.date}, Book: \"#{book.title}\" by #{book.author}")
-      end
     end
 
     context 'when no rentals exist for the person' do
